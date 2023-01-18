@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using School_Management_System.Data;
+using School_Management_System.Models;
 
 namespace School_Management_System.Controllers
 {
@@ -25,12 +26,8 @@ namespace School_Management_System.Controllers
         // GET: StudentController/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.Students == null)
-            {
-                return NotFound();
-            }
             var st = await _context.Students.FindAsync(id);
-            if (st == null)
+            if (id == null || _context.Students == null || st == null)
             {
                 return NotFound();
             }
@@ -46,16 +43,19 @@ namespace School_Management_System.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(Student st)
         {
             try
             {
+                _context.Students.Add(st);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(st);
             }
+            return View(st);
         }
 
         // GET: StudentController/Edit/5

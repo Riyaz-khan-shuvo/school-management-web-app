@@ -1,0 +1,30 @@
+﻿@model School_Management_System.Models.Student
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" type="text" class="form-control" placeholder="Enter First Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" type="text" class="form-control" placeholder="Enter Last Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="FathersName">Father's' Name</label>
+        <input asp-for="FathersName" type="text" class="form-control" placeholder="Enter Father's' Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="MothersName">Mother's' Name</label>
+        <input asp-for="MothersName" type="text" class="form-control" placeholder="Enter Mother's' Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentId">Student Id</label>
+        <input asp-for="StudentId" type="text" class="form-control" placeholder="Enter Student Id Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="Class">Class</label>
+        <input asp-for="Class" type="text" class="form-control" placeholder="Enter Class">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
