@@ -1,0 +1,37 @@
+﻿@model School_Management_System.Models.Student
+
+<a asp-action="Create" class="btn btn-info">Create</a>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.Id) </th>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.FirstName) </th>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.LastName) </th>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.FathersName) </th>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.MothersName) </th>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.StudentId) </th>
+            <th scope="col"> @Html.DisplayNameFor(st=>st.Class) </th>
+
+            <th scope="col"> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <th scope="row"> @Html.DisplayFor(st=>st.Id) </th>
+            <td>@Html.DisplayFor(st=>st.FirstName)</td>
+            <td>@Html.DisplayFor(st=>st.LastName)</td>
+            <td>@Html.DisplayFor(st=>st.FathersName)</td>
+            <td>@Html.DisplayFor(st=>st.MothersName)</td>
+            <td>@Html.DisplayFor(st=>st.StudentId)</td>
+            <td>@Html.DisplayFor(st=>st.Class)</td>
+            <td>
+                <a asp-action="Index"  class="btn btn-primary">Home</a>
+              
+            </td>
+        </tr>
+
+
+    </tbody>
+</table>

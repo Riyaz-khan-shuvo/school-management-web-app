@@ -23,9 +23,18 @@ namespace School_Management_System.Controllers
         }
 
         // GET: StudentController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            if (id == null || _context.Students == null)
+            {
+                return NotFound();
+            }
+            var st = await _context.Students.FindAsync(id);
+            if (st == null)
+            {
+                return NotFound();
+            }
+            return View(st);
         }
 
         // GET: StudentController/Create
