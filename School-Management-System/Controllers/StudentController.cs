@@ -59,24 +59,30 @@ namespace School_Management_System.Controllers
         }
 
         // GET: StudentController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var st = await _context.Students.FindAsync(id);
+            if (id == null || st == null || _context.Students == null)
+            {
+                return NotFound();
+            }
+            return View(st);
         }
 
         // POST: StudentController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, Student std)
         {
-            try
+            if (id != std.Id)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
+            _context.Students.Update(std);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
         }
 
         // GET: StudentController/Delete/5
